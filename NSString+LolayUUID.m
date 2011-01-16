@@ -8,8 +8,11 @@
 
 + (NSString*) stringWithUUID {
 	CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
-	NSString* string = (NSString*)CFMakeCollectable(CFUUIDCreateString(kCFAllocatorDefault, uuid));
+	NSString* string = uuid == NULL ? nil : (NSString*) CFMakeCollectable(CFUUIDCreateString(kCFAllocatorDefault, uuid));
 	CFRelease(uuid);
+	if (! string) {
+		NSLog(@"[NSString+LolayUUID stringWithUUID] WARNING uuid is nil");
+	}
 	return [string autorelease];
 }
 
