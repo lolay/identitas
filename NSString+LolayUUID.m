@@ -13,7 +13,7 @@
         CFRelease(uuid);
     }
 	if (! string) {
-		NSLog(@"[NSString+LolayUUID stringWithUUID] WARNING uuid is nil");
+		DLog(@"[NSString+LolayUUID stringWithUUID] WARNING uuid is nil");
 	}
 	return string;
 }
